@@ -14,16 +14,19 @@ public class NetworkUtil
 {
     public static final String TAG = "ourURL";
 
-    public static final String BASE_URL = "http://dataservice.accuweather.com/forecasts/v1/daily/5day/305605";
-    public static final String METRIC_VALUE = "true";
-    public static final String METRIC_PARAM = "metric";
-    public static final String API_KEY = "";
-    public static final String API_PARAM = "apikey";
+    private static final String BASE_URL = "https://dataservice.accuweather.com/forecasts/v1/daily/5day/305605";
+    private static final String METRIC_VALUE = "true";
+    private static final String METRIC_PARAM = "metric";
+    private static final String API_KEY = "";
+    private static final String API_PARAM = "apikey";
+    private static final String LOGGING_TAG = "URLWECREATED";
+    private NetworkUtil() {
+    }
 
     public static URL buildURLForWeather()
     {
         Uri uri = Uri.parse(BASE_URL).buildUpon()
-                .appendQueryParameter(API_PARAM, API_KEY)
+                .appendQueryParameter(API_PARAM, BuildConfig.ACCUWEATHER_API_KEY)
                 .appendQueryParameter(METRIC_PARAM, METRIC_VALUE)
                 .build();
 
@@ -42,7 +45,7 @@ public class NetworkUtil
         return url;
     }
 
-    public static String getResponse(URL url) throws IOException
+    public static String getResponseFromHttpUrl(URL url) throws IOException
     {
         HttpURLConnection httpURLConnection =  (HttpURLConnection) url.openConnection();
         try
