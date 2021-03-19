@@ -6,25 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/iv_accuweather"
-        android:layout_width="match_parent"
-        android:layout_height="270dp"
-        android:layout_marginTop="80dp"
-        android:paddingHorizontal="10dp"
-        app:srcCompat="@drawable/acculogo"></ImageView>
 
-    <TextView
+    <fragment
+        android:id="@+id/iv_accuweather"
+        android:name="com.example.weatherapp.AccuWeatherLogoFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <fragment
+        android:id="@+id/tv_weather"
+        android:name="com.example.weatherapp.DailyForecastsFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_weather"
-        android:paddingStart="30dp"
-        android:layout_below="@id/iv_accuweather"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        android:text=""
-        android:textColor="#333">
-    </TextView>
+        android:layout_below="@+id/iv_accuweather"/>
 
 
 </RelativeLayout>
